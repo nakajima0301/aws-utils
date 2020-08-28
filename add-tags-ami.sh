@@ -4,7 +4,6 @@ CMDNAME=`basename $0`
 
 # Profile
 PROFILE=my-account
-REGION=ap-northeast-1
 
 # Tag
 NAME=stg01-foo-bar-r
@@ -17,20 +16,27 @@ ROLE=
 SEGMENT=
 
 function usage() {
-    echo "Usage: $CMDNAME [-i AMI ID]" 1>&2
+    echo "Usage: $CMDNAME [-i AMI ID] [-r Region]" 1>&2
     exit 1
 }
 
-while getopts i: OPT
+while getopts r:i: OPT
 do
 	case $OPT in
         "i" ) flag_i="true"; value_i="$OPTARG";;
+        "r" ) flag_r="true"; value_r="$OPTARG";;
         * ) usage
     esac
 done
 
 if [[ $flag_i == "true" ]]; then
 	RESOURCE=$value_i
+else
+    usage
+fi
+
+if [[ $flag_r == "true" ]]; then
+	REGION=$value_r
 else
     usage
 fi
