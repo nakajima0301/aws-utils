@@ -3,17 +3,19 @@
 CMDNAME=`basename $0`
 
 # Profile
-PROFILE=my-account
+PROFILE=
 
 # Tag
-NAME=stg01-foo-bar-r
-COUNTRY=JP
-SERVICE=logaggregator
-DOMAIN=staging
-BRAND=fr
-ENV=staging
+NAME=
+COUNTRY=
+SERVICE=
+DOMAIN=
+BRAND=
+ENV=
 ROLE=
 SEGMENT=
+SYSTEM_ID=
+SUBSYSTEM_ID=
 
 function usage() {
     echo "Usage: $CMDNAME [-i AMI ID] [-r Region]" 1>&2
@@ -50,8 +52,8 @@ Key=Brand,Value=$BRAND
 Key=Env,Value=$ENV
 Key=Role,Value=$ROLE
 Key=Segment,Value=$SEGMENT
-Key=SystemID,Value=INF
-Key=SubSystemID,Value=LGA
+Key=SystemID,Value=$SYSTEM_ID
+Key=SubSystemID,Value=$SUBSYSTEM_ID
 "
 
 aws ec2 create-tags --resources $RESOURCE --tags $TAGS --profile $PROFILE --region $REGION
