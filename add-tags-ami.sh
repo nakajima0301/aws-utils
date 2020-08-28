@@ -6,9 +6,6 @@ CMDNAME=`basename $0`
 PROFILE=my-account
 REGION=ap-northeast-1
 
-# AMI ID
-RESOURCE=foo
-
 # Tag
 NAME=stg01-foo-bar-r
 COUNTRY=JP
